@@ -7,9 +7,6 @@ import { onAuthStateChanged } from 'firebase/auth';
 function App() {
   const [user, setUser] = useState({});
   const [sessionAdmin, setAdmin]=useState();
-
-  
-  
   const admin = user?.email;
   useEffect(()=>{
     onAuthStateChanged(auth, (currentUser) => {
