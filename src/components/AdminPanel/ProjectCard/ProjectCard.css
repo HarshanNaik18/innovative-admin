@@ -1,0 +1,135 @@
+.project_card_container {
+    width: 100%;
+    margin: 0.5rem;
+}
+
+.project_card_header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* padding-bottom: 1rem; */
+}
+
+.project_card_header_Title {
+    display: flex;
+    justify-content: center;
+    margin: 1rem;
+}
+
+.project_card_header_base {
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0.5rem;
+}
+
+.project_card_body {
+    display: flex;
+    border-radius: 2px;
+    /* align-items: center; */
+    margin:1%;
+    border: 1px solid #00000058;
+    width: 98%;
+}
+
+.img_video_container{
+    width: 50%;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    min-height: 350px;
+    height: 350px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.img_video_container::-webkit-scrollbar {
+    display: none;
+}
+
+.project_card_body_img_container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 350px;
+    background-position: center;
+    background-size: cover;
+    border-right: 1px solid #00000058;
+}
+
+#image_nav_arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    font-size: 20px;
+    color: white;
+    margin: 5px;
+    background: #00000058;
+    border-radius: 5px;
+    width: 30px;
+    height: 30px;
+}
+
+#image_nav_arrow:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    background: #0000007d;
+}
+
+.project_card_body_details_container {
+    width: 50%;
+    display: flex;
+    text-align: justify;
+    flex-direction: column;
+    justify-content: start;
+    max-height: 350px;
+    margin: 10px;
+    overflow-y: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.project_card_body_details_container::-webkit-scrollbar {
+    display: none;
+}
+
+.project_card_footer{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    gap: 10px;
+}
+
+.project_card_footer_item{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 50px;
+    
+}
+
+.project_card_footer_item h3 {
+    width: 125px;
+}
+
+.project_card_footer_item button {
+    padding: 3px;
+    background: none;
+    color: black;
+    font-weight: bold;
+    border: 1px solid rgba(255, 255, 255, 0);
+    border-radius:2px;
+}
+
+.project_card_footer_item button:hover{
+    cursor: pointer;
+    border: 1px solid blue;
+}
