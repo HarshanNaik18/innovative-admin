@@ -12,7 +12,7 @@ function Projects() {
     const [displayProjects, setDisplayProjects] = useState([]);
     const [searchData, setSearchData] = useState('');
     const projectRef = collection(db, "projects");
-    const domainRef = collection(db, "Domains")
+    const domainRef = collection(db, "Domains");
 
 
     const verify = async (index) => {
@@ -30,7 +30,7 @@ function Projects() {
             console.log("Transfered");
         }
         const id = project.id;
-        updateDoc(doc(db, "projects", id), {
+        await updateDoc(doc(db, "projects", id), {
             flag: true,
         }).then(
             toast.success(unverifiedProjects[index].title + " verified", {
@@ -41,7 +41,7 @@ function Projects() {
         ).catch((err) => console.log(err));
     }
 
-    const deleteProject = async (index) => {
+    const deleteProject = (index) => {
 
         const id = unverifiedProjects[index].id;
         deleteDoc(doc(db, "projects", id))
