@@ -32,16 +32,16 @@ function Domains() {
                 closeOnClick: true
             })
         ).catch((err) => console.log(err));
-        const q = query(collection(db, "Domains"), where("title", "==", temp.title), where("domain", "==", temp.domain));
-        const data = [];
-        onSnapshot(q, querySnapshot => {
-            querySnapshot.forEach((item) => {
-                data.push(item.id);
-            });
-            data.forEach(id => {
-                deleteDoc(doc(db, "Domains", id)).catch((err) => console.log(err));
-            })
-        });
+        // const q = query(collection(db, "Domains"), where("title", "==", temp.title), where("domain", "==", temp.domain));
+        // const data = [];
+        // onSnapshot(q, querySnapshot => {
+        //     querySnapshot.forEach((item) => {
+        //         data.push(item.id);
+        //     });
+        //     data.forEach(id => {
+        //         deleteDoc(doc(db, "Domains", id)).catch((err) => console.log(err));
+        //     })
+        // });
     }
 
     const deleteProject = (index) => {
@@ -56,16 +56,16 @@ function Domains() {
                 })
             ).then((err) => console.log(err));
 
-        const q = query(collection(db, "Domains"), where("title", "==", temp.title), where("domain", "==", temp.domain));
-        const data = [];
-        onSnapshot(q, querySnapshot => {
-            querySnapshot.forEach((item) => {
-                data.push(item.id);
-            });
-            data.forEach(id => {
-                deleteDoc(doc(db, "Domains", id)).catch((err) => console.log(err));
-            })
-        });
+        // const q = query(collection(db, "Domains"), where("title", "==", temp.title), where("domain", "==", temp.domain));
+        // const data = [];
+        // onSnapshot(q, querySnapshot => {
+        //     querySnapshot.forEach((item) => {
+        //         data.push(item.id);
+        //     });
+        //     data.forEach(id => {
+        //         deleteDoc(doc(db, "Domains", id)).catch((err) => console.log(err));
+        //     })
+        // });
     }
 
     const FilterDomain = (e) => {

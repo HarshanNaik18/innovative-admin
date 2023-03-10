@@ -18,22 +18,21 @@ function Projects() {
     const verify = async (index) => {
         const project = unverifiedProjects[index];
         for (var i = 0; i < project.videos.length; i++) {
-            await addDoc(domainRef, {
+            addDoc(domainRef, {
                 videos: project.videos[i],
                 title: project.title,
                 channelName: project.channelName,
                 image: project.image,
                 domain: project.domain,
-                shortDesc:project.shortDesc,
-                date:project.date,
-            });
-            console.log("Transfered");
+                shortDesc: project.shortDesc,
+                date: project.date,
+            })
         }
         const id = project.id;
         await updateDoc(doc(db, "projects", id), {
             flag: true,
         }).then(
-            toast.success(unverifiedProjects[index].title + " verified", {
+            toast.success(project.title + " verified", {
                 autoClose: 1000,
                 pauseOnHover: false,
                 closeOnClick: true
