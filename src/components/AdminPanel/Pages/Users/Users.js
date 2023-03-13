@@ -143,7 +143,7 @@ function Users() {
           </div>
           <div className='users_table'>
             <table>
-              <tr style={{ fontSize: '20px', fontWeight: '1000', zIndex: '1' }}>
+              <tr style={{ fontSize: '20px', fontWeight: 'bold', zIndex: '1', backgroundColor:'#009880', color:'white' }}>
                 <td className='sl_no'>Sl.No</td>
                 <td className='name_td'>Name</td>
                 <td className='email_td'>Email</td>
@@ -184,7 +184,7 @@ function Users() {
           </div>
           <div className='users_table'>
             <table>
-              <tr style={{ fontSize: '20px', fontWeight: '1000', zIndex: '1' }}>
+              <tr style={{ fontSize: '20px', fontWeight: 'bold', zIndex: '1', backgroundColor:'#009880', color:'white' }}>
                 <td className='sl_no'>Sl.No</td>
                 <td className='name_td'>Name</td>
                 <td className='email_td'>Email</td>

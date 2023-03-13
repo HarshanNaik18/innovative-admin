@@ -1,4 +1,4 @@
-import { collection, deleteDoc, doc, onSnapshot, query, updateDoc, where } from 'firebase/firestore';
+import { collection, deleteDoc, doc, onSnapshot, query, where } from 'firebase/firestore';
 import { db } from '../../../../Firebase/Firebase';
 import React, { useState, useEffect } from 'react'
 import ProjectCard from '../../ProjectCard/ProjectCard'
