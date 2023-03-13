@@ -69,9 +69,10 @@ function ProjectCard({ project }) {
         <div className='project_card_footer_item'>
           <h3>Code Files : </h3>
           {
+            (project.code.length > 0) ?
             project.code.map((link, index) => (
-              <button onClick={() => { window.open(link, "_blank") }} > {project.codeName[index]} </button>
-            ))
+              <button onClick={() => { window.open(link, "_blank") }} > {project.reportName[index]} </button>
+            )) : <h4>Code files are not shared</h4>
           }
         </div>
       </div>

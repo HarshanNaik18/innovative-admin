@@ -21,28 +21,28 @@ function Domains() {
     const [branch, setBranch] = useState('');
     const projectRef = collection(db, "projects");
 
-    const blockProject = (index) => {
-        const temp = displayProjects[index];
-        updateDoc(doc(db, "projects", temp.id), {
-            flag: false,
-        }).then(
-            toast.warning(displayProjects[index].title + " blocked", {
-                autoClose: 1000,
-                pauseOnHover: false,
-                closeOnClick: true
-            })
-        ).catch((err) => console.log(err));
-        // const q = query(collection(db, "Domains"), where("title", "==", temp.title), where("domain", "==", temp.domain));
-        // const data = [];
-        // onSnapshot(q, querySnapshot => {
-        //     querySnapshot.forEach((item) => {
-        //         data.push(item.id);
-        //     });
-        //     data.forEach(id => {
-        //         deleteDoc(doc(db, "Domains", id)).catch((err) => console.log(err));
-        //     })
-        // });
-    }
+    // const blockProject = (index) => {
+    //     const temp = displayProjects[index];
+    //     updateDoc(doc(db, "projects", temp.id), {
+    //         flag: false,
+    //     }).then(
+    //         toast.warning(displayProjects[index].title + " blocked", {
+    //             autoClose: 1000,
+    //             pauseOnHover: false,
+    //             closeOnClick: true
+    //         })
+    //     ).catch((err) => console.log(err));
+    //     const q = query(collection(db, "Domains"), where("title", "==", temp.title), where("domain", "==", temp.domain));
+    //     const data = [];
+    //     onSnapshot(q, querySnapshot => {
+    //         querySnapshot.forEach((item) => {
+    //             data.push(item.id);
+    //         });
+    //         data.forEach(id => {
+    //             deleteDoc(doc(db, "Domains", id)).catch((err) => console.log(err));
+    //         })
+    //     });
+    // }
 
     const deleteProject = (index) => {
         const id = displayProjects[index].id;
@@ -56,16 +56,16 @@ function Domains() {
                 })
             ).then((err) => console.log(err));
 
-        // const q = query(collection(db, "Domains"), where("title", "==", temp.title), where("domain", "==", temp.domain));
-        // const data = [];
-        // onSnapshot(q, querySnapshot => {
-        //     querySnapshot.forEach((item) => {
-        //         data.push(item.id);
-        //     });
-        //     data.forEach(id => {
-        //         deleteDoc(doc(db, "Domains", id)).catch((err) => console.log(err));
-        //     })
-        // });
+        const q = query(collection(db, "Domains"), where("title", "==", temp.title), where("domain", "==", temp.domain));
+        const data = [];
+        onSnapshot(q, querySnapshot => {
+            querySnapshot.forEach((item) => {
+                data.push(item.id);
+            });
+            data.forEach(id => {
+                deleteDoc(doc(db, "Domains", id)).catch((err) => console.log(err));
+            })
+        });
     }
 
     const FilterDomain = (e) => {
@@ -176,7 +176,7 @@ function Domains() {
                         </select>
 
                         <select value={sem} onChange={(e) => filterSem(e)}>
-                            <option value='0'>All Sems</option>
+                            <option value=''>All Sems</option>
                             <option value='1'>I</option>
                             <option value='2'>II</option>
                             <option value='3'>III</option>
@@ -201,7 +201,7 @@ function Domains() {
                                     />
                                     <div className='project_verify'>
                                         <button style={{ background: 'red' }} onClick={() => deleteProject(index)} >Delete <i class="fa fa-times" aria-hidden="true" /></button>
-                                        <button style={{ background: 'gold' }} onClick={() => blockProject(index)} >Block <i class="fa fa-ban" aria-hidden="true" /></button>
+                                        {/* <button style={{ background: 'gold' }} onClick={() => blockProject(index)} >Block <i class="fa fa-ban" aria-hidden="true" /></button> */}
                                     </div>
 
                                 </div>

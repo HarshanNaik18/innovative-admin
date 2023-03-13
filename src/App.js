@@ -6,14 +6,19 @@ import { auth } from './Firebase/Firebase';
 import { onAuthStateChanged } from 'firebase/auth';
 function App() {
   const [user, setUser] = useState({});
-  const [sessionAdmin, setAdmin]=useState();
+  const [sessionAdmin, setSessionAdmin] = useState({});
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+  });
   const admin = user?.email;
-  useEffect(()=>{
-    onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      setAdmin(JSON.parse(sessionStorage.getItem("admin")));
-    })
-  },[]);
+  useEffect(() => {
+    const getSessionAdnin = () => {
+      setSessionAdmin(JSON.parse(sessionStorage.getItem("admin")));
+    }
+    return () => {
+      getSessionAdnin();
+    }
+  }, []);
   return (
     <div className="App">
       {
