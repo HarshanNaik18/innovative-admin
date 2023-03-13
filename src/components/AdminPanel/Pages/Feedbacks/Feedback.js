@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { db } from '../../../../Firebase/Firebase'
-import { collection, onSnapshot, query } from 'firebase/firestore';
+import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 import './Feedback.css'
 
 function Feedback() {
     const [enquies, setEnquiries] = useState([]);
     const enquiryRef = collection(db, "enquiries");
     useEffect(() => {
-        const q = query(enquiryRef);
+        const q = query(enquiryRef,orderBy("time","desc"));
         const FetchData = onSnapshot(q, querySnapshot => {
             const data = [];
             querySnapshot.forEach(item => {

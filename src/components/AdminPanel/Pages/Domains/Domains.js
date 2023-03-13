@@ -1,4 +1,4 @@
-import { collection, deleteDoc, doc, onSnapshot, query, where } from 'firebase/firestore';
+import { collection, deleteDoc, doc, onSnapshot, orderBy, query, where } from 'firebase/firestore';
 import { db } from '../../../../Firebase/Firebase';
 import React, { useState, useEffect } from 'react'
 import ProjectCard from '../../ProjectCard/ProjectCard'
@@ -128,7 +128,7 @@ function Domains() {
     }
 
     useEffect(() => {
-        const q = query(projectRef, where("flag", "==", true));
+        const q = query(projectRef,orderBy("date","desc"),orderBy("title"),where("flag", "==", true));
         const Fetchdata = onSnapshot(q, querySnapshot => {
             const data = [];
             querySnapshot.forEach(item => {

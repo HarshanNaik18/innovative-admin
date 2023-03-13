@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import './Users.css'
 import { db } from '../../../../Firebase/Firebase';
-import { collection, deleteDoc, doc, onSnapshot, query, updateDoc, where } from 'firebase/firestore';
+import { collection, deleteDoc, doc, onSnapshot, orderBy, query, updateDoc, where } from 'firebase/firestore';
 import { toast } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
@@ -19,15 +19,15 @@ function Users() {
       Host: "smtp.elasticemail.com",
       Username: "iplinnovative685@gmail.com",
       Password: "D55DADE0B03DFB8ADD0AAC4A10504070590F",
-      Port:2525,
+      Port: 2525,
       To: `${unverifiedUsers[index].email}`,
       From: "iplinnovative685@gmail.com",
       Subject: "Innovative request verified.",
       Body: "Your 'Innovative - Unveil Your Ideas' account is verified by the admin. Now you can login into your account. Thank You, Team Innovative"
     };
 
-    if(window.Email){
-      window.Email.send(config).then(()=>console.log("Mail sent"));
+    if (window.Email) {
+      window.Email.send(config).then(() => console.log("Mail sent"));
     }
     var id = unverifiedUsers[index].id;
     updateDoc(doc(db, "users", id), {
@@ -46,15 +46,15 @@ function Users() {
       Host: "smtp.elasticemail.com",
       Username: "iplinnovative685@gmail.com",
       Password: "D55DADE0B03DFB8ADD0AAC4A10504070590F",
-      Port:2525,
+      Port: 2525,
       To: `${unverifiedUsers[index].email}`,
       From: "iplinnovative685@gmail.com",
       Subject: "Innovative request is deleted.",
       Body: "Your 'Innovative - Unveil Your Ideas' account is deleted by the admin. Your credenitals are not not matching with college database. Thank You, Team Innovative"
     };
 
-    if(window.Email){
-      window.Email.send(config).then(()=>console.log("Mail sent"));
+    if (window.Email) {
+      window.Email.send(config).then(() => console.log("Mail sent"));
     }
     deleteDoc(doc(db, "users", unverifiedUsers[index].id)).then(
       toast.error(unverifiedUsers[index].name + " deleted", {
@@ -106,8 +106,8 @@ function Users() {
   }
 
   useEffect(() => {
-    const q1 = query(userRef, where("flag", "==", false));
-    const q2 = query(userRef, where("flag", "==", true));
+    const q1 = query(userRef, orderBy("branch"), orderBy("name"), where("flag", "==", false));
+    const q2 = query(userRef, orderBy("branch"), orderBy("name"), where("flag", "==", true));
 
     const unverifiedUsersData = onSnapshot(q1, (querySnapshot) => {
       const unverifiedUsersList = [];
@@ -143,7 +143,7 @@ function Users() {
           </div>
           <div className='users_table'>
             <table>
-              <tr style={{ fontSize: '20px', fontWeight: 'bold', zIndex: '1', backgroundColor:'#009880', color:'white' }}>
+              <tr style={{ fontSize: '20px', fontWeight: 'bold', zIndex: '1', backgroundColor: '#009880', color: 'white' }}>
                 <td className='sl_no'>Sl.No</td>
                 <td className='name_td'>Name</td>
                 <td className='email_td'>Email</td>
@@ -184,7 +184,7 @@ function Users() {
           </div>
           <div className='users_table'>
             <table>
-              <tr style={{ fontSize: '20px', fontWeight: 'bold', zIndex: '1', backgroundColor:'#009880', color:'white' }}>
+              <tr style={{ fontSize: '20px', fontWeight: 'bold', zIndex: '1', backgroundColor: '#009880', color: 'white' }}>
                 <td className='sl_no'>Sl.No</td>
                 <td className='name_td'>Name</td>
                 <td className='email_td'>Email</td>
