@@ -56,6 +56,7 @@ function Users() {
     if (window.Email) {
       window.Email.send(config).then(() => console.log("Mail sent"));
     }
+
     deleteDoc(doc(db, "users", unverifiedUsers[index].id)).then(
       toast.error(unverifiedUsers[index].name + " deleted", {
         autoClose: 750,
@@ -75,6 +76,21 @@ function Users() {
         closeOnClick: true
       })
     ).catch((err) => console.log(err));
+
+    const config = {
+      Host: "smtp.elasticemail.com",
+      Username: "iplinnovative685@gmail.com",
+      Password: "D55DADE0B03DFB8ADD0AAC4A10504070590F",
+      Port: 2525,
+      To: `${verifiedUsers[index].email}`,
+      From: "iplinnovative685@gmail.com",
+      Subject: "Innovative request is deleted.",
+      Body: "Your 'Innovative - Unveil Your Ideas' account is blocked by the admin. Admin found some suspicious activities in your account. Please wait till admin verification. Thank You, Team Innovative"
+    };
+
+    if (window.Email) {
+      window.Email.send(config).then(() => console.log("Mail sent"));
+    }
   }
 
   const DeleteVerifiedUser = (index) => {
@@ -86,6 +102,20 @@ function Users() {
           closeOnClick: true
         })
       ).catch((err) => console.log(err));
+      const config = {
+        Host: "smtp.elasticemail.com",
+        Username: "iplinnovative685@gmail.com",
+        Password: "D55DADE0B03DFB8ADD0AAC4A10504070590F",
+        Port: 2525,
+        To: `${verifiedUsers[index].email}`,
+        From: "iplinnovative685@gmail.com",
+        Subject: "Innovative request is deleted.",
+        Body: "Your 'Innovative - Unveil Your Ideas' account is deleted by the admin. Admin found some suspicious activities in your account. Thank You, Team Innovative"
+      };
+  
+      if (window.Email) {
+        window.Email.send(config).then(() => console.log("Mail sent"));
+      }
   }
 
   const verifiedUsersSeacrchFunction = (e) => {
