@@ -27,7 +27,6 @@
 .project_card_body {
     display: flex;
     border-radius: 2px;
-    /* align-items: center; */
     margin:1%;
     border: 1px solid #00000058;
     width: 98%;
